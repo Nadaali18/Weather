@@ -7,7 +7,7 @@ class CustomText extends StatelessWidget {
       this.fontSize,
       this.color,
       this.textdirection});
-  final String? text;
+  final dynamic text;
    final FontWeight? fontWeight;
   final double? fontSize;
   final Color? color;

@@ -3,8 +3,8 @@ import 'package:weather_app/widgets/custom_text.dart';
 
 class CustomColumn extends StatelessWidget {
   const CustomColumn({super.key,required this.text1,required this.text2,this.icon,required this.size1,required this.size2});
-final String text1;
-final String text2;
+final dynamic text1;
+final dynamic text2;
 final IconData? icon;
 final double size1;
 final double size2;
@@ -16,12 +16,12 @@ final double size2;
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CustomText(text1,color: Colors.white,fontSize: size1,),
+          CustomText(text1,color: Colors.white,fontSize: size1,fontWeight: FontWeight.bold,),
           Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 4),
-                child: CustomText(text2,color: Colors.white,fontSize: size2,),
+                child: CustomText(text2,color: Colors.white,fontSize: size2,fontWeight: FontWeight.bold,),
               ),
               Icon(icon,color: Colors.white,),
             ],

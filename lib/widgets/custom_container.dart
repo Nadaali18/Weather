@@ -16,7 +16,7 @@ final Widget child;
         width: double.infinity,
         height: height,
         decoration: BoxDecoration(
-          color: Colors.blue[800],
+          color: Color.fromRGBO(255, 255, 255, 0.2),
           borderRadius: BorderRadius.circular(20),
         ),
         child: child,
