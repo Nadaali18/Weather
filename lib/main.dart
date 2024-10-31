@@ -39,17 +39,17 @@ MaterialColor getWeatherColor(String? condition) {
   switch (condition?.toLowerCase()) {
     case 'sunny': 
     case 'clear': 
-      return Colors.yellow;
+      return Colors.indigo;
     case 'partly cloudy': 
     case 'mist':
     case 'patchy snow possible': 
     case 'patchy freezing drizzle possible':
     case 'light drizzle': 
     case 'patchy light drizzle': 
-      return Colors.lightBlue;
+      return Colors.blueGrey;
     case 'cloudy': 
     case 'fog': 
-      return Colors.grey;
+      return Colors.blue;
     case 'overcast':
      case 'blowing snow': 
     case 'blizzard':  
@@ -58,13 +58,13 @@ MaterialColor getWeatherColor(String? condition) {
     case 'patchy light rain': 
     case 'moderate rain at times': 
     case 'moderate rain': 
-      return Colors.blueGrey;
+      return Colors.brown;
     case 'patchy rain possible': 
     case 'heavy rain at times': 
     case 'heavy rain': 
     case 'light rain shower': 
     case 'moderate or heavy rain shower': 
-      return Colors.blue;  
+      return Colors.purple;  
     case 'thundery outbreaks possible': 
     case 'patchy light rain with thunder': 
     case 'moderate or heavy rain with thunder': 

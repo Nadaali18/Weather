@@ -13,6 +13,7 @@ class NoWeatherBody extends StatelessWidget {
         child: Column(
          mainAxisSize: MainAxisSize.min,
           children: [
+          Image.asset('assets/images/Weather3.png'),
            const CustomText('There is no weather ',color: Colors.white,fontSize: 30,),
           Row(
           mainAxisAlignment: MainAxisAlignment.center,

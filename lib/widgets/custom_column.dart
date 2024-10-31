@@ -19,10 +19,7 @@ final double size2;
           CustomText(text1,color: Colors.white,fontSize: size1,fontWeight: FontWeight.bold,),
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 4),
-                child: CustomText(text2,color: Colors.white,fontSize: size2,fontWeight: FontWeight.bold,),
-              ),
+              CustomText(text2,color: Colors.white,fontSize: size2,fontWeight: FontWeight.bold,),
               Icon(icon,color: Colors.white,),
             ],
           ),

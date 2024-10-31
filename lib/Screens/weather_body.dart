@@ -18,9 +18,10 @@ class WeatherBody extends StatelessWidget {
       body: Container(
          decoration:  BoxDecoration(
         gradient: LinearGradient(colors: [
+         getWeatherColor(weatherModel.condition)[700]!,
+         getWeatherColor(weatherModel.condition)[600]!,
          getWeatherColor(weatherModel.condition),
-         getWeatherColor(weatherModel.condition)[300]!,
-         getWeatherColor(weatherModel.condition)[100]!,
+         getWeatherColor(weatherModel.condition)[400]!,
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter
@@ -44,19 +45,20 @@ class WeatherBody extends StatelessWidget {
               children: [
                 CustomColumn(
                   text1: '${weatherModel.temp.round()}°',
-                  size1: 40, text2: weatherModel.cityName,
-                  size2: 30,icon: Icons.location_on,
+                  size1: 40, 
+                  text2: weatherModel.cityName,
+                  size2: 30,
+                  icon: Icons.location_on,
                   ),
-               Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: Image.network('http:${weatherModel.image}'),
-               ),
+               Image.network('http:${weatherModel.image}',width: 120,height: 120,fit: BoxFit.cover,),
               ],
             ),
                const SizedBox(height: 20,),
                CustomColumn(
                  text1:' ${weatherModel.maxtemp.round()}° / ${weatherModel.mintemp.round()}° Feels like ${weatherModel.maxtemp.round()}°',
-                 size1: 15, text2:'Updated at ${weatherModel.lastUpdated.hour}:${weatherModel.lastUpdated.minute}',size2: 15,
+                 size1: 15, 
+                 text2:'Updated at ${weatherModel.lastUpdated.hour}:${weatherModel.lastUpdated.minute}',
+                 size2: 15,
                 ),   
                const SizedBox(height: 30,),
                CustomContainer(
@@ -64,6 +66,7 @@ class WeatherBody extends StatelessWidget {
                   child: SingleChildScrollView(
                   child: Column(
                     children: [
+                    SizedBox(height:6),
                     for (int index = 0; index < weatherModel.forecastDays.length; index++)
                     buildWeatherRow(index),
                     ],
@@ -99,69 +102,68 @@ class WeatherBody extends StatelessWidget {
       ),
     );
   }
-Widget buildWeatherRow(int index) {
-final dayData = weatherModel.forecastDays[index];
-final String dayLabel = index == 0 ? "Today" : weatherModel.getDayName(dayData['date']);
-const String nightImage ='assets/images/nightImage.png';
+  Widget buildWeatherRow(int index) {
+  final dayData = weatherModel.forecastDays[index];
+  final String dayLabel = index == 0 ? "Today" : weatherModel.getDayName(dayData['date']);
+  const String nightImage = 'assets/images/nightImage.png';
+
   return Padding(
-      padding: const EdgeInsets.only(top: 8,right: 8,left: 8),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15,),
-                child: CustomText(dayLabel,color: Colors.white,fontSize: 20,),
-              ),
-            ],
+    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,  
+      children: [
+        
+        Padding(
+          padding: const EdgeInsets.only(left: 5),
+          child: SizedBox(
+            width: 120,  
+            child: CustomText(
+              dayLabel,
+              color: Colors.white,
+              fontSize: 20,
+            ),
           ),
-           Spacer(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Row(
-                  children: [
-                    const Icon(Icons.water_drop_sharp,color: Colors.lightBlue,),
-                    CustomText(dayData['day']['uv'].round(),color: Colors.white,fontSize: 16,),
-                  ],
-                ),
-              ),
-            ],
+        ),
+        
+        // عنصر UV مع أيقونة الماء
+        Row(
+          children: [
+            Icon(
+              Icons.water_drop_sharp,
+              color: Colors.grey[400],
+              size: 15,
+            ),
+            CustomText(
+              dayData['day']['uv'].round().toString(),
+              color: Colors.white,
+              fontSize: 15,
+            ),
+          ],
+        ),
+        Row(
+          children:[
+          Image.network(
+          'http:${dayData['day']['condition']['icon']}',
+          height: 30,
+          width: 40,
+        ),
+        Image.asset(
+          nightImage,
+          height: 25,
+          width: 40,
+        ),
+        ]),
+        SizedBox(
+          width: 100,  
+          child: CustomText(
+            '${dayData['day']['maxtemp_c'].round()}° / ${dayData['day']['mintemp_c'].round()}°',
+            color: Colors.white,
+            fontSize: 20,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.network('http:${dayData['day']['condition']['icon']}',height: 30,width: 40,),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(nightImage,height: 25,width: 40,),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 15,right: 15),
-                child: CustomText('${dayData['day']['maxtemp_c'].round()}° / ${dayData['day']['mintemp_c'].round()}°',color: Colors.white,fontSize: 20,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
- }
-
+        ),
+      ],
+    ),
+  );
 }
-
+}
