@@ -26,7 +26,7 @@ class NoWeatherBody extends StatelessWidget {
               const SizedBox(width: 5,),
                IconButton(
                 onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder:(context)=> const Search(),),);
+            Navigator.push(context, MaterialPageRoute(builder:(context)=>  Search(),),);
             },
             icon: const Icon(Icons.search_rounded,color: Colors.white,)),
             ],

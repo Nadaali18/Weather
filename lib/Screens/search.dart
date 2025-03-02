@@ -3,14 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/widgets/custom_text.dart';
 
-class Search extends StatefulWidget {
-  const Search({super.key});
+class Search extends StatelessWidget {
+   Search({super.key});
 
-  @override
-  State<Search> createState() => _SearchState();
-}
-
-class _SearchState extends State<Search> {
  final TextEditingController controller = TextEditingController();
 
   @override
@@ -25,7 +20,7 @@ class _SearchState extends State<Search> {
             colors: [
             Colors.purple,
             Color.fromARGB(255, 171, 71, 188),
-            const Color.fromRGBO(240, 98, 146, 1),
+            Color.fromRGBO(240, 98, 146, 1),
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter

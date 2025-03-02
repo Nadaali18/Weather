@@ -34,7 +34,7 @@ class WeatherBody extends StatelessWidget {
             child: Align(
               alignment: AlignmentDirectional.topEnd,
               child: IconButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder:(context)=> const Search(),),);
+              Navigator.push(context, MaterialPageRoute(builder:(context)=>  Search(),),);
               },
               icon: const Icon(Icons.search_rounded,color: Colors.white,)),
             ),
@@ -66,7 +66,7 @@ class WeatherBody extends StatelessWidget {
                   child: SingleChildScrollView(
                   child: Column(
                     children: [
-                    SizedBox(height:6),
+                    const SizedBox(height:6),
                     for (int index = 0; index < weatherModel.forecastDays.length; index++)
                     buildWeatherRow(index),
                     ],
@@ -125,8 +125,6 @@ class WeatherBody extends StatelessWidget {
             ),
           ),
         ),
-        
-        // عنصر UV مع أيقونة الماء
         Row(
           children: [
             Icon(
