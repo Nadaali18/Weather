@@ -1,4 +1,4 @@
-# Counter Points
+# Weather App
 
 A Flutter-based weather application that allows users to search for a city's weather conditions. If the city is found, the app displays the weather details; otherwise, it shows a No Weather screen.
 
